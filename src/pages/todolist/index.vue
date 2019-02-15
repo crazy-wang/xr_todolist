@@ -92,13 +92,21 @@
         ],
         nameValue: '',
         ageValue: '',
-        tableData: []
+        tableData: [],
+        url: '../../../static/json/tableData.json'
       }
     },
     components: {
       sonCom
     },
     methods: {
+      async getTableData() {
+        let res = await this.axios.get(this.url)
+        console.log(res, '初始请求回来的数据')
+        let resData = res.data
+        this.tableData = resData
+      },
+
       // 组件输入值后暴露出来给父组件中使用
       changeInput(nameValue) {
         // console.log(nameValue)
@@ -139,6 +147,9 @@
         this.tableData = []
         this.$message.success('删除成功')
       }
+    },
+    created() {
+      this.getTableData()
     }
   }
 </script>

@@ -9,6 +9,10 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
 
+// 引入axios(用来调接口接入数据的)
+import axios from 'axios'
+Vue.prototype.axios = axios // 挂到原型上，用的时候直接this. 形式调用
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
